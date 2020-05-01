@@ -26,8 +26,8 @@ void createLocalD(Matrix &D,mesh m){
 
 void createLocalE(Matrix &E,mesh m){
 	float alpha = m.getParameter(KTE_ALPHA);
-    E.at(0).at(0) += -alpha*(3/2);  E.at(0).at(1) += alpha*(3/2);
-    E.at(1).at(0) += -alpha*(3/2);  E.at(1).at(1) += alpha*(3/2);
+    E.at(0).at(0) += -(alpha*(3))/2;  E.at(0).at(1) += (alpha*(3))/2;
+    E.at(1).at(0) += -(alpha*(3))/2;  E.at(1).at(1) += (alpha*(3))/2;
 }
 
 
@@ -53,8 +53,8 @@ Matrix createLocalK(int element,mesh &m){
     createLocalB(B,m);
     createLocalC(C,m);
     createLocalD(D,m);
-    createLocalC(E,m);
-    createLocalD(H,m);
+    createLocalE(E,m);
+    createLocalH(H,m);
 
     Vector row1, row2, row3, row4;
 
