@@ -33,8 +33,8 @@ void createLocalE(Matrix &E,mesh m){
 
 void createLocalH(Matrix &H,mesh m){
 	float deltha = m.getParameter(KTE_DELTA);
-    H.at(0).at(0) += -(deltha)/2;  H.at(0).at(1) += (deltha)/2;
-    H.at(1).at(0) += -(deltha)/2;  H.at(1).at(1) += (deltha)/2;
+    H.at(0).at(0) += -deltha/2;  H.at(0).at(1) += deltha/2;
+    H.at(1).at(0) += -deltha/2;  H.at(1).at(1) += deltha/2;
 }
 
 
@@ -127,6 +127,11 @@ void assemblyK(element e,Matrix localK,Matrix &K,int nnodes){
     K.at(index3).at(index2) += localK.at(2).at(1);
     K.at(index4).at(index1) += localK.at(3).at(0);
     K.at(index4).at(index2) += localK.at(3).at(1);
+
+    K.at(index3).at(index3) += localK.at(2).at(2);
+    K.at(index3).at(index4) += localK.at(2).at(3);
+    K.at(index4).at(index3) += localK.at(3).at(2);
+    K.at(index4).at(index4) += localK.at(3).at(3);
 
 }
 
